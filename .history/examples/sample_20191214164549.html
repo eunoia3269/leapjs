@@ -5,7 +5,7 @@
 
     <script>// JavaScript code goes here
 
-    // Setup Leap loop with frame callback function
+   // Setup Leap loop with frame callback function
     var controllerOptions = {enableGestures: true};
 
     Leap.loop(controllerOptions, function(frame) {
@@ -53,15 +53,6 @@
         }
     })
 
-    function vectorToString(vector, digits) {
-        if (typeof digits === "undefined") {
-            digits = 1;
-        }
-        return "(" + vector[0].toFixed(digits) + ", "
-                    + vector[1].toFixed(digits) + ", "
-                    + vector[2].toFixed(digits) + ")";
-    }
-    
     </script>
   </head>
 
