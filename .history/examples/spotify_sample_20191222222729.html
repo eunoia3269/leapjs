@@ -10,35 +10,13 @@
   <script src="https://sdk.scdn.co/spotify-player.js"></script>
   <script>
     window.onSpotifyWebPlaybackSDKReady = () => {
-      const token = 'BQAR4DtkT4etkGnpu7II0Ir-4yPPol_PZzJt37Zt2-wvL-qXH5ssr1DsN2ClzGEnW0J_BsAvML08ocmm7diDhbXWXIAElbNjAYVxatMpuUHFDGgVav7XZPqWWYiq-yeLcxulh6wIPgfqeqyorUjxNAhsPp2MfeOw6gUAtuZ0caUcpE6lHFLF0h4';
+      const token = 'BQDXa44hIoIn3V261RFN0RTbHqPMXODIyAW2FTRSIVDU5uql7d8NPI4nGcSS2bT2F-NV20ApKWNkU7aCWVRKpnns-6FvKgzkh7FCWnvOG_BvodVrREDc7zE1bQDQ-Gt6TtwjJxliDKalG5MK9PuBuJi_HAiLnGVY3xS4c2WDKkW3w64nKoaYr-Q';
       const player = new Spotify.Player({
-        name: 'Web Playback SDK Quick Start Player', // on3xmz5zdjnmaqyp4ft2l4xtd
+        name: 'Web Playback SDK Quick Start Player',
         getOAuthToken: cb => { cb(token); }
       });
       console.log(player);
-
-      // Error handling
-      player.addListener('initialization_error', ({ message }) => { console.error(message); });
-      player.addListener('authentication_error', ({ message }) => { console.error(message); });
-      player.addListener('account_error', ({ message }) => { console.error(message); });
-      player.addListener('playback_error', ({ message }) => { console.error(message); });
-
-      // Playback status updates
-      player.addListener('player_state_changed', state => { console.log(state); });
-
-      // Ready
-      player.addListener('ready', ({ device_id }) => {
-        console.log('Ready with Device ID', device_id);
-      });
-
-      // Not Ready
-      player.addListener('not_ready', ({ device_id }) => {
-        console.log('Device ID has gone offline', device_id);
-      });
-
-      // Connect to the player!
-      player.connect();
-
+      
     //   const play = ({
     //     spotify_uri,
     //     playerInstance: {
@@ -64,6 +42,28 @@
     //     playerInstance: new Spotify.Player({ name: "..." }),
     //     spotify_uri: 'spotify:track:7xGfFoTpQ2E7fRF5lN10tr',
     //   });
+
+      // Error handling
+      player.addListener('initialization_error', ({ message }) => { console.error(message); });
+      player.addListener('authentication_error', ({ message }) => { console.error(message); });
+      player.addListener('account_error', ({ message }) => { console.error(message); });
+      player.addListener('playback_error', ({ message }) => { console.error(message); });
+
+      // Playback status updates
+      player.addListener('player_state_changed', state => { console.log(state); });
+
+      // Ready
+      player.addListener('ready', ({ device_id }) => {
+        console.log('Ready with Device ID', device_id);
+      });
+
+      // Not Ready
+      player.addListener('not_ready', ({ device_id }) => {
+        console.log('Device ID has gone offline', device_id);
+      });
+
+      // Connect to the player!
+      player.connect();
     };
   </script>
 </body>
