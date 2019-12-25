@@ -4,14 +4,11 @@
   <title>Spotify Web Playback SDK Quick Start Tutorial</title>
 </head>
 <body>
-  <div>
-    <h1>Spotify Web Playback SDK Quick Start Tutorial</h1>
-    <h2>Open your console log: <code>View > Developer > JavaScript Console</code></h2>
-    <button type="button" id="volume-up-button">Volume Up</button>
-    <button type="button" id="volume-down-button">Volume Down</button>
-    <button type="button" id="pause-button">Pause</button>
-    <button type="button" id="resume-button">Resume</button>
-  </div>
+  <h1>Spotify Web Playback SDK Quick Start Tutorial</h1>
+  <h2>Open your console log: <code>View > Developer > JavaScript Console</code></h2>
+  <button type="button" id="volume-up-button">Volume Up</button>
+  <button type="button" id="volume-down-button">Volume Down</button>
+  <button type="button" id="pause-button">Pause</button>
 
   <script src="https://sdk.scdn.co/spotify-player.js"></script>
   <script>
@@ -49,14 +46,21 @@
             }
         });
 
+        // Get the local volume
+        player.getVolume().then(volume => {
+            let volume_percentage = volume * 100;
+            console.log(`The volume of the player is ${volume_percentage}%`);
+        });
+
+        // Set the local volume
+        player.setVolume(0.5).then(() => {
+            console.log('Volume updated!');
+        });
+
         document.getElementById("volume-up-button").onclick = function() {
             player.getVolume().then(volume => {
                 let volume_percentage = volume * 100;
                 console.log(`The volume of the player is ${volume_percentage}%`);
-                set_volume = volume + 0.1;
-                player.setVolume(set_volume).then(() => {
-                    console.log('Volume Up!');
-                });
             });
         };
 
@@ -64,10 +68,6 @@
             player.getVolume().then(volume => {
                 let volume_percentage = volume * 100;
                 console.log(`The volume of the player is ${volume_percentage}%`);
-                set_volume = volume - 0.1;
-                player.setVolume(set_volume).then(() => {
-                    console.log('Volume Down!');
-                });
             });
         };
 

@@ -55,7 +55,7 @@
                 console.log(`The volume of the player is ${volume_percentage}%`);
                 set_volume = volume + 0.1;
                 player.setVolume(set_volume).then(() => {
-                    console.log('Volume Up!');
+                    console.log('Volume updated!');
                 });
             });
         };
@@ -64,10 +64,10 @@
             player.getVolume().then(volume => {
                 let volume_percentage = volume * 100;
                 console.log(`The volume of the player is ${volume_percentage}%`);
-                set_volume = volume - 0.1;
-                player.setVolume(set_volume).then(() => {
-                    console.log('Volume Down!');
-                });
+            });
+            set_volume = volume - 0.1;
+            player.setVolume(set_volume).then(() => {
+                console.log('Volume updated!');
             });
         };
 

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Spotify Web Playback SDK Quick Start Tutorial</title>
+</head>
+<body>
+  <h1>Spotify Web Playback SDK Quick Start Tutorial</h1>
+  <h2>Open your console log: <code>View > Developer > JavaScript Console</code></h2>
+  <button type="button" id="volume-up-button">Volume Up</button>
+
+  <script src="https://sdk.scdn.co/spotify-player.js"></script>
+  <script>
+    document.getElementById("volume-up-button").onclick = function() {
+
+    }
+
+    window.onSpotifyWebPlaybackSDKReady = () => {
+        const token = 'BQBqhYUL52LSbP3t1v4y8iv6Cmljdo6zGsNF0h5sfNMQda99Ey6nFAOiyk0cmDT7IkITn9EWKVzfmqp_LbYkDg8MktCO-Z1WZBf07oE8Hf2ie3X98Ts2Xk6phVw3c0DXmKxyO2Q6TtYLj0i9lBx9_aF7w1ZF9gaMkZpqwkvhlmQNMoW51zKyFOo';
+        const player = new Spotify.Player({
+            name: 'Web Playback SDK Quick Start Player',
+            getOAuthToken: cb => { cb(token); }
+        });
+        console.log(player);
+
+        // Error handling
+        player.addListener('initialization_error', ({ message }) => { console.error(message); });
+        player.addListener('authentication_error', ({ message }) => { console.error(message); });
+        player.addListener('account_error', ({ message }) => { console.error(message); });
+        player.addListener('playback_error', ({ message }) => { console.error(message); });
+
+        // Playback status updates
+        player.addListener('player_state_changed', state => { console.log(state); });
+
+        // Ready
+        player.addListener('ready', ({ device_id }) => {
+            console.log('Ready with Device ID', device_id);
+        });
+
+        // Not Ready
+        player.addListener('not_ready', ({ device_id }) => {
+            console.log('Device ID has gone offline', device_id);
+        });
+
+        // Connect to the player!
+        player.connect().then(success => {
+            if (success) {
+                console.log('The Web Playback SDK successfully connected to Spotify!');
+            }
+        });
+
+        // Get the local volume
+        player.getVolume().then(volume => {
+            let volume_percentage = volume * 100;
+            console.log(`The volume of the player is ${volume_percentage}%`);
+        });
+
+        // Set the local volume
+        player.setVolume(0.5).then(() => {
+            console.log('Volume updated!');
+        });
+
+    }
+  </script>
+</body>
+</html>

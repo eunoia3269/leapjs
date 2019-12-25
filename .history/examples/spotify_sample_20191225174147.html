@@ -4,19 +4,14 @@
   <title>Spotify Web Playback SDK Quick Start Tutorial</title>
 </head>
 <body>
-  <div>
-    <h1>Spotify Web Playback SDK Quick Start Tutorial</h1>
-    <h2>Open your console log: <code>View > Developer > JavaScript Console</code></h2>
-    <button type="button" id="volume-up-button">Volume Up</button>
-    <button type="button" id="volume-down-button">Volume Down</button>
-    <button type="button" id="pause-button">Pause</button>
-    <button type="button" id="resume-button">Resume</button>
-  </div>
+  <h1>Spotify Web Playback SDK Quick Start Tutorial</h1>
+  <h2>Open your console log: <code>View > Developer > JavaScript Console</code></h2>
+  <button type="button" id="volume-up-button">Volume Up</button>
 
   <script src="https://sdk.scdn.co/spotify-player.js"></script>
   <script>
     window.onSpotifyWebPlaybackSDKReady = () => {
-        const token = 'BQCKmOmm8O1_rxWgOXoLglrMNFmqmivka8h5f0VayWiYOkENE8jdcLCPr1Bp3tuJjLcWF_j-gJ7Y_gBHRrf1M5gZTTAfEr8I_9NspleiNNHEjbWVNDWYZklF6HnrzwowIGEhAOfmLTRP8ZvmK0nSPEaXJMLQdZa4IHLYzm1gLpq93kPBOBMFIGQ';
+        const token = 'BQBqhYUL52LSbP3t1v4y8iv6Cmljdo6zGsNF0h5sfNMQda99Ey6nFAOiyk0cmDT7IkITn9EWKVzfmqp_LbYkDg8MktCO-Z1WZBf07oE8Hf2ie3X98Ts2Xk6phVw3c0DXmKxyO2Q6TtYLj0i9lBx9_aF7w1ZF9gaMkZpqwkvhlmQNMoW51zKyFOo';
         const player = new Spotify.Player({
             name: 'Web Playback SDK Quick Start Player',
             getOAuthToken: cb => { cb(token); }
@@ -49,39 +44,24 @@
             }
         });
 
+        // Get the local volume
+        player.getVolume().then(volume => {
+            let volume_percentage = volume * 100;
+            console.log(`The volume of the player is ${volume_percentage}%`);
+        });
+
+        // Set the local volume
+        player.setVolume(0.5).then(() => {
+            console.log('Volume updated!');
+        });
+
         document.getElementById("volume-up-button").onclick = function() {
+            console.log("push vol-button");
             player.getVolume().then(volume => {
                 let volume_percentage = volume * 100;
                 console.log(`The volume of the player is ${volume_percentage}%`);
-                set_volume = volume + 0.1;
-                player.setVolume(set_volume).then(() => {
-                    console.log('Volume Up!');
-                });
             });
-        };
-
-        document.getElementById("volume-down-button").onclick = function() {
-            player.getVolume().then(volume => {
-                let volume_percentage = volume * 100;
-                console.log(`The volume of the player is ${volume_percentage}%`);
-                set_volume = volume - 0.1;
-                player.setVolume(set_volume).then(() => {
-                    console.log('Volume Down!');
-                });
-            });
-        };
-
-        document.getElementById("pause-button").onclick = function() {
-            player.pause().then(() => {
-                console.log('Paused!');
-            });
-        };
-
-        document.getElementById("resume-button").onclick = function() {
-            player.resume().then(() => {
-               console.log('Resumed!');
-            });
-        };
+        }
 
     }
   </script>

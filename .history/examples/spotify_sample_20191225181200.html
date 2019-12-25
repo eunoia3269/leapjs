@@ -55,19 +55,20 @@
                 console.log(`The volume of the player is ${volume_percentage}%`);
                 set_volume = volume + 0.1;
                 player.setVolume(set_volume).then(() => {
-                    console.log('Volume Up!');
+                    console.log('Volume updated!');
                 });
             });
         };
 
         document.getElementById("volume-down-button").onclick = function() {
+            let volume_percentage = 0;
             player.getVolume().then(volume => {
-                let volume_percentage = volume * 100;
+                volume_percentage = volume * 100;
                 console.log(`The volume of the player is ${volume_percentage}%`);
-                set_volume = volume - 0.1;
-                player.setVolume(set_volume).then(() => {
-                    console.log('Volume Down!');
-                });
+            });
+            volume_percentage = volume_percentage - 10;
+            player.setVolume(0.5).then(() => {
+                console.log('Volume updated!');
             });
         };
 
