@@ -38,6 +38,7 @@
 
         // Connect to the player!
         player.connect().then(success => {
+            console.log("success" + success);
             if (success) {
                 console.log('The Web Playback SDK successfully connected to Spotify!');
             }
@@ -47,11 +48,6 @@
         player.getVolume().then(volume => {
             let volume_percentage = volume * 100;
             console.log(`The volume of the player is ${volume_percentage}%`);
-        });
-
-        // Set the local volume
-        player.setVolume(0.5).then(() => {
-            console.log('Volume updated!');
         });
 
     }
