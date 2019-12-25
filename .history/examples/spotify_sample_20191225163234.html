@@ -39,13 +39,10 @@
         // Connect to the player!
         player.connect();
 
-        // Get the local volume
         player.getVolume().then(volume => {
             let volume_percentage = volume * 100;
             console.log(`The volume of the player is ${volume_percentage}%`);
         });
-        
-    }
   </script>
 </body>
 </html>

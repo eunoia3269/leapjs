@@ -9,6 +9,7 @@
 
   <script src="https://sdk.scdn.co/spotify-player.js"></script>
   <script>
+    console.log("hoge");
     window.onSpotifyWebPlaybackSDKReady = () => {
         const token = 'BQBqhYUL52LSbP3t1v4y8iv6Cmljdo6zGsNF0h5sfNMQda99Ey6nFAOiyk0cmDT7IkITn9EWKVzfmqp_LbYkDg8MktCO-Z1WZBf07oE8Hf2ie3X98Ts2Xk6phVw3c0DXmKxyO2Q6TtYLj0i9lBx9_aF7w1ZF9gaMkZpqwkvhlmQNMoW51zKyFOo';
         const player = new Spotify.Player({
@@ -39,13 +40,10 @@
         // Connect to the player!
         player.connect();
 
-        // Get the local volume
         player.getVolume().then(volume => {
             let volume_percentage = volume * 100;
             console.log(`The volume of the player is ${volume_percentage}%`);
         });
-        
-    }
   </script>
 </body>
 </html>

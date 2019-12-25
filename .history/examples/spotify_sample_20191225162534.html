@@ -10,7 +10,7 @@
   <script src="https://sdk.scdn.co/spotify-player.js"></script>
   <script>
     window.onSpotifyWebPlaybackSDKReady = () => {
-        const token = 'BQBqhYUL52LSbP3t1v4y8iv6Cmljdo6zGsNF0h5sfNMQda99Ey6nFAOiyk0cmDT7IkITn9EWKVzfmqp_LbYkDg8MktCO-Z1WZBf07oE8Hf2ie3X98Ts2Xk6phVw3c0DXmKxyO2Q6TtYLj0i9lBx9_aF7w1ZF9gaMkZpqwkvhlmQNMoW51zKyFOo';
+        const token = 'BQBlvGD8lb1OwQ6EeMUNVbTzDjmOlsCdzn87zquW-9KJkHA3SikbjTaOm5u71EBJGohQ-uCu8OAe0a3nj66PkaqpYDtWHZKFTAcmqdYn_iWBogr6nLpIuW780e8Ij9Wg_OOD-8r2oQjjh3cmtyokR7QYV2Fo5QztXJ4U_eReV1SleaO-BeRkK4g';
         const player = new Spotify.Player({
             name: 'Web Playback SDK Quick Start Player',
             getOAuthToken: cb => { cb(token); }
@@ -39,13 +39,10 @@
         // Connect to the player!
         player.connect();
 
-        // Get the local volume
-        player.getVolume().then(volume => {
-            let volume_percentage = volume * 100;
-            console.log(`The volume of the player is ${volume_percentage}%`);
-        });
-        
-    }
+        // player.getVolume().then(volume => {
+        //     let volume_percentage = volume * 100;
+        //     console.log(`The volume of the player is ${volume_percentage}%`);
+        // });
   </script>
 </body>
 </html>
