@@ -43,7 +43,7 @@
                     case "swipe":
                         console.log("Swipe");
                         //Classify swipe as either horizontal or vertical
-                        let swipeDirection = "";
+                        let swipeDirection = "None";
                         var isHorizontal = Math.abs(gesture.direction[0]) > Math.abs(gesture.direction[1]);
                         //Classify as right-left or up-down
                         if(isHorizontal){
@@ -59,7 +59,7 @@
                                 swipeDirection = "down";
                             }                  
                         }
-                        console.log("swipeDirection: " + swipeDirection);
+                        console.log("swipeDirection" + swipeDirection);
                         gestureString += "start position: " + vectorToString(gesture.startPosition) + " mm, "
                                     + "current position: " + vectorToString(gesture.position) + " mm, "
                                     + "direction: " + vectorToString(gesture.direction, 2) + ", "
