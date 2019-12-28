@@ -16,7 +16,7 @@
   <script src="https://sdk.scdn.co/spotify-player.js"></script>
   <script>
     window.onSpotifyWebPlaybackSDKReady = () => {
-        const token = 'BQDEK1RS1wbr02Ta6UGUrzybRJ-uHUGgT4XgWsJbq8VkfThQFdM3yr4CzYStR-SZJ1Qgn9FAex0RMrW1pC9t9qDfTzt35wgr6ohaQ4llSDcaVgsrlc6Bft0Sv9a7UEm0iXxDT3su4OOIVHnluOty8_4CvqPmAjbuNDQG4gSxr9mjQPCTl8xZ2Eg';
+        const token = 'BQCKmOmm8O1_rxWgOXoLglrMNFmqmivka8h5f0VayWiYOkENE8jdcLCPr1Bp3tuJjLcWF_j-gJ7Y_gBHRrf1M5gZTTAfEr8I_9NspleiNNHEjbWVNDWYZklF6HnrzwowIGEhAOfmLTRP8ZvmK0nSPEaXJMLQdZa4IHLYzm1gLpq93kPBOBMFIGQ';
         const player = new Spotify.Player({
             name: 'Web Playback SDK Quick Start Player',
             getOAuthToken: cb => { cb(token); }
@@ -53,7 +53,7 @@
             player.getVolume().then(volume => {
                 let volume_percentage = volume * 100;
                 console.log(`The volume of the player is ${volume_percentage}%`);
-                set_volume = (volume < 0.9) ? volume + 0.1 : 1.0;
+                set_volume = volume + 0.1;
                 player.setVolume(set_volume).then(() => {
                     console.log('Volume Up!');
                 });
@@ -64,7 +64,7 @@
             player.getVolume().then(volume => {
                 let volume_percentage = volume * 100;
                 console.log(`The volume of the player is ${volume_percentage}%`);
-                set_volume = (volume > 0.1) ? volume - 0.1 : 0.0;
+                set_volume = volume - 0.1;
                 player.setVolume(set_volume).then(() => {
                     console.log('Volume Down!');
                 });
