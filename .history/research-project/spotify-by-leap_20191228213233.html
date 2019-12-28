@@ -10,10 +10,8 @@
     <script src="../leap-0.6.4.js"></script>
     <script src="https://sdk.scdn.co/spotify-player.js"></script>
     <script>
-
-    // Spotify setting
     window.onSpotifyWebPlaybackSDKReady = () => {
-        const token = 'BQAQh6nltT1hKdxWUtZaJVdGJdi0NP52wWCYBG2w7FgIaoDO7phPIv4qibFieg0UTLeiEq291NQa-TIwjW7n4WMv7NBo9qCEnN9V3HS6TFpB26PMiTNHMLFonEHtqWuT4VN84XEc0nfjIK-BN9xff4NztgEGh5YXtukHWOJS6U3KWF7wA9RtoO0';
+        const token = 'BQDEK1RS1wbr02Ta6UGUrzybRJ-uHUGgT4XgWsJbq8VkfThQFdM3yr4CzYStR-SZJ1Qgn9FAex0RMrW1pC9t9qDfTzt35wgr6ohaQ4llSDcaVgsrlc6Bft0Sv9a7UEm0iXxDT3su4OOIVHnluOty8_4CvqPmAjbuNDQG4gSxr9mjQPCTl8xZ2Eg';
         const player = new Spotify.Player({
             name: 'Web Playback SDK Quick Start Player',
             getOAuthToken: cb => { cb(token); }
@@ -198,15 +196,15 @@
   <body onload="checkLibrary()">
     <h1>Leap JavaScript Sample</h1>
     <div>
-      <h1>Spotify By Leap</h1>
-      <h2>Open your console log: <code>View > Developer > JavaScript Console</code></h2>
-      <button type="button" id="volume-up-button" class="btn btn-primary">Volume Up</button>
-      <button type="button" id="volume-down-button" class="btn btn-primary">Volume Down</button>
-      <button type="button" id="pause-button" class="btn btn-primary">Pause</button>
-      <button type="button" id="resume-button" class="btn btn-primary">Resume</button>
-      <button type="button" id="seek-button" class="btn btn-primary">Seek</button>
-      <button type="button" id="previous-track-button" class="btn btn-primary">Previous Track</button>
-      <button type="button" id="next-track-button" class="btn btn-primary">Next Track</button>
+        <h1>Spotify By Leap</h1>
+        <h2>Open your console log: <code>View > Developer > JavaScript Console</code></h2>
+        <button type="button" id="volume-up-button" class="btn btn-primary">Volume Up</button>
+        <button type="button" id="volume-down-button" class="btn btn-primary">Volume Down</button>
+        <button type="button" id="pause-button" class="btn btn-primary">Pause</button>
+        <button type="button" id="resume-button" class="btn btn-primary">Resume</button>
+        <button type="button" id="seek-button" class="btn btn-primary">Seek</button>
+        <button type="button" id="previous-track-button" class="btn btn-primary">Previous Track</button>
+        <button type="button" id="next-track-button" class="btn btn-primary">Next Track</button>
     </div>
     <div id="main">
       <h3>Frame data:</h3>

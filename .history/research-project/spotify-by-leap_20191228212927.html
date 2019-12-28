@@ -1,99 +1,10 @@
-<!DOCTYPE html>
 <html>
   <head>
     <title>Spotify By Leap</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../bootstrap-4.4.1-dist/css/bootstrap.min.css"></link>
     <script src="../leap-0.6.4.js"></script>
-    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+
     <script>
 
-    // Spotify setting
-    window.onSpotifyWebPlaybackSDKReady = () => {
-        const token = 'BQAQh6nltT1hKdxWUtZaJVdGJdi0NP52wWCYBG2w7FgIaoDO7phPIv4qibFieg0UTLeiEq291NQa-TIwjW7n4WMv7NBo9qCEnN9V3HS6TFpB26PMiTNHMLFonEHtqWuT4VN84XEc0nfjIK-BN9xff4NztgEGh5YXtukHWOJS6U3KWF7wA9RtoO0';
-        const player = new Spotify.Player({
-            name: 'Web Playback SDK Quick Start Player',
-            getOAuthToken: cb => { cb(token); }
-        });
-        console.log(player);
-
-        // Error handling
-        player.addListener('initialization_error', ({ message }) => { console.error(message); });
-        player.addListener('authentication_error', ({ message }) => { console.error(message); });
-        player.addListener('account_error', ({ message }) => { console.error(message); });
-        player.addListener('playback_error', ({ message }) => { console.error(message); });
-
-        // Playback status updates
-        player.addListener('player_state_changed', state => { console.log(state); });
-
-        // Ready
-        player.addListener('ready', ({ device_id }) => {
-            console.log('Ready with Device ID', device_id);
-        });
-
-        // Not Ready
-        player.addListener('not_ready', ({ device_id }) => {
-            console.log('Device ID has gone offline', device_id);
-        });
-
-        // Connect to the player!
-        player.connect().then(success => {
-            if (success) {
-                console.log('The Web Playback SDK successfully connected to Spotify!');
-            }
-        });
-
-        // music player function
-        document.getElementById("volume-up-button").onclick = function() {
-            player.getVolume().then(volume => {
-                let volume_percentage = volume * 100;
-                console.log(`The volume of the player is ${volume_percentage}%`);
-                set_volume = (volume < 0.9) ? volume + 0.1 : 1.0;
-                player.setVolume(set_volume).then(() => {
-                    console.log('Volume Up!');
-                });
-            });
-        };
-        document.getElementById("volume-down-button").onclick = function() {
-            player.getVolume().then(volume => {
-                let volume_percentage = volume * 100;
-                console.log(`The volume of the player is ${volume_percentage}%`);
-                set_volume = (volume > 0.1) ? volume - 0.1 : 0.0;
-                player.setVolume(set_volume).then(() => {
-                    console.log('Volume Down!');
-                });
-            });
-        };
-        document.getElementById("pause-button").onclick = function() {
-            player.pause().then(() => {
-                console.log('Paused!');
-            });
-        };
-        document.getElementById("resume-button").onclick = function() {
-            player.resume().then(() => {
-               console.log('Resumed!');
-            });
-        };
-        document.getElementById("seek-button").onclick = function() {
-            // Seek to a minute into the track
-            player.seek(60 * 1000).then(() => {
-                console.log('Changed position!');
-            });
-        };
-        document.getElementById("previous-track-button").onclick = function() {
-            player.previousTrack().then(() => {
-                console.log('Set to previous track!');
-            });
-        };
-        document.getElementById("next-track-button").onclick = function() {
-            player.nextTrack().then(() => {
-                console.log('Skipped to next track!');
-            });
-        };
-    }
 
 
     // Setup Leap loop with frame callback function
@@ -198,15 +109,15 @@
   <body onload="checkLibrary()">
     <h1>Leap JavaScript Sample</h1>
     <div>
-      <h1>Spotify By Leap</h1>
-      <h2>Open your console log: <code>View > Developer > JavaScript Console</code></h2>
-      <button type="button" id="volume-up-button" class="btn btn-primary">Volume Up</button>
-      <button type="button" id="volume-down-button" class="btn btn-primary">Volume Down</button>
-      <button type="button" id="pause-button" class="btn btn-primary">Pause</button>
-      <button type="button" id="resume-button" class="btn btn-primary">Resume</button>
-      <button type="button" id="seek-button" class="btn btn-primary">Seek</button>
-      <button type="button" id="previous-track-button" class="btn btn-primary">Previous Track</button>
-      <button type="button" id="next-track-button" class="btn btn-primary">Next Track</button>
+        <h1>Spotify By Leap</h1>
+        <h2>Open your console log: <code>View > Developer > JavaScript Console</code></h2>
+        <button type="button" id="volume-up-button" class="btn btn-primary">Volume Up</button>
+        <button type="button" id="volume-down-button" class="btn btn-primary">Volume Down</button>
+        <button type="button" id="pause-button" class="btn btn-primary">Pause</button>
+        <button type="button" id="resume-button" class="btn btn-primary">Resume</button>
+        <button type="button" id="seek-button" class="btn btn-primary">Seek</button>
+        <button type="button" id="previous-track-button" class="btn btn-primary">Previous Track</button>
+        <button type="button" id="next-track-button" class="btn btn-primary">Next Track</button>
     </div>
     <div id="main">
       <h3>Frame data:</h3>
