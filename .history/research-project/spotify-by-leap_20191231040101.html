@@ -14,7 +14,7 @@
     // Spotify setting
     window.onSpotifyWebPlaybackSDKReady = () => {
         // Get your access token from https://developer.spotify.com/documentation/web-playback-sdk/quick-start
-        const token = 'BQCCUFJJcEkib6D9uC0uRlsYN_zmg7koq73q-QtD4OYm3891R2zj6m1qTQLHb7CoX612lu_xHhdyE7X7SfaZkD-PAYeo6mGoDaa-j2vIU3wu2AF_HDiyGl0qcl1hiVRJNoPP75NODjrrc9wRXcGQ6cpxVLiW8BRR5o1Ysu-xgS3YFooku8HROWc';
+        const token = 'BQCalc7hJtC47UoSz7jJEFU5AcQ7mt4tjVG-aHmKNhP8Aa4KFMhNK719Hvzh3KHaXSBGVriFuCm6RhYH9DHOXfOIWGYe5NrI00AhojuV_XrGZuzu-caFfS_e72TiOrf_hQ4L5aTfkhtOLm76L_tECejL-NJ2eaSIYWnN-BN-OYVqHYijP_6Y0ms';
         const player = new Spotify.Player({
             name: 'Web Playback SDK Quick Start Player',
             getOAuthToken: cb => { cb(token); }
@@ -83,24 +83,40 @@
                             var dotProduct = Leap.vec3.dot(direction, gesture.normal);
                             if (dotProduct  >  0) {
                                 clockwise = true;
-                                // console.log("clockwise");
+                                console.log("clockwise");
+                                // Volume Up
+                                player.getVolume().then(volume => {
+                                    let volume_percentage = volume * 100;
+                                    console.log(`The volume of the player is ${volume_percentage}%`);
+                                    set_volume = (volume < 0.95) ? volume + 0.05 : 1.0;
+                                    player.setVolume(set_volume).then(() => {
+                                        console.log('Volume Up!');
+                                    });
+                                });
                             } else {
-                                // console.log("counterclockwise");
+                                console.log("counterclockwise");
+                                // Volume Down
+                                player.getVolume().then(volume => {
+                                    let volume_percentage = volume * 100;
+                                    console.log(`The volume of the player is ${volume_percentage}%`);
+                                    set_volume = (volume > 0.05) ? volume - 0.05 : 0.0;
+                                    player.setVolume(set_volume).then(() => {
+                                        console.log('Volume Down!');
+                                    });
+                                });
                             }
                             player.getVolume().then(volume => {
                                 let volume_percentage = volume * 100;
                                 console.log(`The volume of the player is ${volume_percentage}%`);
                                 if(clockwise) {
-                                    // Volume Up if clockwise
-                                    set_volume = (volume < 0.99) ? volume + 0.01 : 1.0;
-                                    console.log('Volume Up');
+                                    // if clockwise, Volume Up
+                                    set_volume = (volume < 0.95) ? volume + 0.05 : 1.0;
                                 } else {
-                                    // Volume Down if counterclockwise
-                                    set_volume = (volume > 0.01) ? volume - 0.01 : 0.0;
-                                    console.log('Volume Down');
+                                    // if counterclockwise, Volume Down
+                                    set_volume = (volume > 0.05) ? volume - 0.05 : 0.0;
                                 }
                                 player.setVolume(set_volume).then(() => {
-                                    // console.log('Volume Change!');
+                                    console.log('Volume Change!');
                                 });
                             });
                             console.log("Circle");

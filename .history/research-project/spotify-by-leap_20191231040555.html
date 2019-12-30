@@ -83,26 +83,42 @@
                             var dotProduct = Leap.vec3.dot(direction, gesture.normal);
                             if (dotProduct  >  0) {
                                 clockwise = true;
-                                // console.log("clockwise");
-                            } else {
-                                // console.log("counterclockwise");
-                            }
-                            player.getVolume().then(volume => {
-                                let volume_percentage = volume * 100;
-                                console.log(`The volume of the player is ${volume_percentage}%`);
-                                if(clockwise) {
-                                    // Volume Up if clockwise
-                                    set_volume = (volume < 0.99) ? volume + 0.01 : 1.0;
-                                    console.log('Volume Up');
-                                } else {
-                                    // Volume Down if counterclockwise
-                                    set_volume = (volume > 0.01) ? volume - 0.01 : 0.0;
-                                    console.log('Volume Down');
-                                }
-                                player.setVolume(set_volume).then(() => {
-                                    // console.log('Volume Change!');
+                                console.log("clockwise");
+                                // Volume Up
+                                player.getVolume().then(volume => {
+                                    let volume_percentage = volume * 100;
+                                    console.log(`The volume of the player is ${volume_percentage}%`);
+                                    set_volume = (volume < 1.0) ? volume + 0.01 : 1.0;
+                                    player.setVolume(set_volume).then(() => {
+                                        console.log('Volume Up!');
+                                    });
                                 });
-                            });
+                            } else {
+                                console.log("counterclockwise");
+                                // Volume Down
+                                player.getVolume().then(volume => {
+                                    let volume_percentage = volume * 100;
+                                    console.log(`The volume of the player is ${volume_percentage}%`);
+                                    set_volume = (volume > 0.0) ? volume - 0.01 : 0.0;
+                                    player.setVolume(set_volume).then(() => {
+                                        console.log('Volume Down!');
+                                    });
+                                });
+                            }
+                            // player.getVolume().then(volume => {
+                            //     let volume_percentage = volume * 100;
+                            //     console.log(`The volume of the player is ${volume_percentage}%`);
+                            //     if(clockwise) {
+                            //         // if clockwise, Volume Up
+                            //         set_volume = (volume < 1.0) ? volume + 0.01 : 1.0;
+                            //     } else {
+                            //         // if counterclockwise, Volume Down
+                            //         set_volume = (volume > 0.0) ? volume - 0.01 : 0.0;
+                            //     }
+                            //     player.setVolume(set_volume).then(() => {
+                            //         console.log('Volume Change!');
+                            //     });
+                            // });
                             console.log("Circle");
                             gestureString += "center: " + vectorToString(gesture.center) + " mm, "
                                         + "normal: " + vectorToString(gesture.normal, 2) + ", "
