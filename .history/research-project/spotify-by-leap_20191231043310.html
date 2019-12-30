@@ -52,6 +52,7 @@
         var controllerOptions = {enableGestures: true};
 
         Leap.loop(controllerOptions, function(frame) {
+            console.log("frame" + frame);
             // Body of callback function
             // Display Gesture object data
             var gestureString = "";
