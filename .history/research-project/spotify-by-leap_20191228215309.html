@@ -13,8 +13,7 @@
 
     // Spotify setting
     window.onSpotifyWebPlaybackSDKReady = () => {
-        // Get your access token from https://developer.spotify.com/documentation/web-playback-sdk/quick-start
-        const token = 'BQCalc7hJtC47UoSz7jJEFU5AcQ7mt4tjVG-aHmKNhP8Aa4KFMhNK719Hvzh3KHaXSBGVriFuCm6RhYH9DHOXfOIWGYe5NrI00AhojuV_XrGZuzu-caFfS_e72TiOrf_hQ4L5aTfkhtOLm76L_tECejL-NJ2eaSIYWnN-BN-OYVqHYijP_6Y0ms';
+        const token = 'BQAQh6nltT1hKdxWUtZaJVdGJdi0NP52wWCYBG2w7FgIaoDO7phPIv4qibFieg0UTLeiEq291NQa-TIwjW7n4WMv7NBo9qCEnN9V3HS6TFpB26PMiTNHMLFonEHtqWuT4VN84XEc0nfjIK-BN9xff4NztgEGh5YXtukHWOJS6U3KWF7wA9RtoO0';
         const player = new Spotify.Player({
             name: 'Web Playback SDK Quick Start Player',
             getOAuthToken: cb => { cb(token); }
@@ -47,7 +46,7 @@
             }
         });
 
-        // -- Leap Motion Code --
+        // -- ここにリープモーションのコード挿入 --
         // Setup Leap loop with frame callback function
         var controllerOptions = {enableGestures: true};
 
@@ -67,11 +66,10 @@
 
                     switch (gesture.type) {
                         case "circle":
-                            // とりあえず Volume Up 処理
                             player.getVolume().then(volume => {
                                 let volume_percentage = volume * 100;
                                 console.log(`The volume of the player is ${volume_percentage}%`);
-                                set_volume = (volume < 0.95) ? volume + 0.05 : 1.0;
+                                set_volume = (volume < 0.9) ? volume + 0.1 : 1.0;
                                 player.setVolume(set_volume).then(() => {
                                     console.log('Volume Up!');
                                 });
@@ -184,6 +182,86 @@
             });
         };
     }
+
+
+    // // Setup Leap loop with frame callback function
+    // var controllerOptions = {enableGestures: true};
+
+    // Leap.loop(controllerOptions, function(frame) {
+    //     // Body of callback function
+    //     // Display Gesture object data
+    //     var gestureString = "";
+    //     if (frame.gestures.length > 0) {
+    //         for (var i = 0; i < frame.gestures.length; i++) {
+    //             var gesture = frame.gestures[i];
+    //             gestureString += "Gesture ID: " + gesture.id + ", "
+    //                         + "type: " + gesture.type + ", "
+    //                         + "state: " + gesture.state + ", "
+    //                         + "hand IDs: " + gesture.handIds.join(", ") + ", "
+    //                         + "pointable IDs: " + gesture.pointableIds.join(", ") + ", "
+    //                         + "duration: " + gesture.duration + " &micro;s, ";
+
+    //             switch (gesture.type) {
+    //                 case "circle":
+    //                     // check clockwise or counterclockwise
+    //                     var clockwise = false;
+    //                     var pointableID = gesture.pointableIds[0];
+    //                     var direction = frame.pointable(pointableID).direction;
+    //                     var dotProduct = Leap.vec3.dot(direction, gesture.normal);
+    //                     if (dotProduct  >  0) {
+    //                         clockwise = true;
+    //                         console.log("clockwise");
+    //                     } else {
+    //                         console.log("counterclockwise");
+    //                     }
+    //                     console.log("Circle");
+    //                     gestureString += "center: " + vectorToString(gesture.center) + " mm, "
+    //                                 + "normal: " + vectorToString(gesture.normal, 2) + ", "
+    //                                 + "radius: " + gesture.radius.toFixed(1) + " mm, "
+    //                                 + "progress: " + gesture.progress.toFixed(2) + " rotations";
+    //                     break;
+    //                 case "swipe":
+    //                     console.log("Swipe");
+    //                     //Classify swipe as either horizontal or vertical
+    //                     let swipeDirection = "";
+    //                     var isHorizontal = Math.abs(gesture.direction[0]) > Math.abs(gesture.direction[1]);
+    //                     //Classify as right-left or up-down
+    //                     if(isHorizontal){
+    //                         if(gesture.direction[0] > 0){
+    //                             swipeDirection = "right";
+    //                         } else {
+    //                             swipeDirection = "left";
+    //                         }
+    //                     } else { //vertical
+    //                         if(gesture.direction[1] > 0){
+    //                             swipeDirection = "up";
+    //                         } else {
+    //                             swipeDirection = "down";
+    //                         }                  
+    //                     }
+    //                     console.log("swipeDirection: " + swipeDirection);
+    //                     gestureString += "start position: " + vectorToString(gesture.startPosition) + " mm, "
+    //                                 + "current position: " + vectorToString(gesture.position) + " mm, "
+    //                                 + "direction: " + vectorToString(gesture.direction, 2) + ", "
+    //                                 + "speed: " + gesture.speed.toFixed(1) + " mm/s";
+    //                     break;
+    //                 case "screenTap":
+    //                     console.log("ScreenTap");
+    //                 case "keyTap":
+    //                     console.log("KeyTap");
+    //                     gestureString += "position: " + vectorToString(gesture.position) + " mm, "
+    //                                 + "direction: " + vectorToString(gesture.direction, 2);
+    //                     break;
+    //                 default:
+    //                     console.log("UnknownGesture");
+    //                     gestureString += "unknown gesture type";
+    //             }
+    //             gestureString += "<br />";
+    //         }
+    //     }
+    //     // Display gestureString
+    //     document.getElementById('gestureData').innerHTML = gestureString;
+    // })
 
     function vectorToString(vector, digits) {
         try{
