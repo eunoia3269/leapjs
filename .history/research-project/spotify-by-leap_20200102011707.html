@@ -14,7 +14,7 @@
     // Spotify setting
     window.onSpotifyWebPlaybackSDKReady = () => {
         // Get your access token from https://developer.spotify.com/documentation/web-playback-sdk/quick-start
-        const token = 'BQDXxHNgj1PCaVWOWdOWFR9KIgchkMJzlfZz7Ku810JNYYJPhDi1uf1aP9DGsFSUM6exeFlU8h5bJUNdErBC6xai9FIK4irZlxpAgXLNUCwZgfHOofL0tGvVCcsF0JyDjJaaAguBue-QDRdZ66C-rp1zzpZxQa91EtiRpAvv2lhKjCDM62FFpmc';
+        const token = 'BQCCUFJJcEkib6D9uC0uRlsYN_zmg7koq73q-QtD4OYm3891R2zj6m1qTQLHb7CoX612lu_xHhdyE7X7SfaZkD-PAYeo6mGoDaa-j2vIU3wu2AF_HDiyGl0qcl1hiVRJNoPP75NODjrrc9wRXcGQ6cpxVLiW8BRR5o1Ysu-xgS3YFooku8HROWc';
         const player = new Spotify.Player({
             name: 'Web Playback SDK Quick Start Player',
             getOAuthToken: cb => { cb(token); }
@@ -129,15 +129,8 @@
                                 player.nextTrack().then(() => {
                                     console.log('Skipped to next track!');
                                 });
-                            } else if (swipeDirection === "up") {
-                                player.resume().then(() => {
-                                    console.log('Resumed!');
-                                });
-                            } else if (swipeDirection === "down") {
-                                player.pause().then(() => {
-                                    console.log("Pause!");
-                                });
                             }
+                            setTimeout(checkLibrary, 1000);
                             console.log("swipeDirection: " + swipeDirection);
                             gestureString += "start position: " + vectorToString(gesture.startPosition) + " mm, "
                                         + "current position: " + vectorToString(gesture.position) + " mm, "
