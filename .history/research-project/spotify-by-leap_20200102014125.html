@@ -80,7 +80,7 @@
                             }
                             player.getVolume().then(volume => {
                                 let volume_percentage = volume * 100;
-                                // console.log(`The volume of the player is ${volume_percentage}%`);
+                                console.log(`The volume of the player is ${volume_percentage}%`);
                                 if(clockwise) {
                                     // Volume Up if clockwise
                                     set_volume = (volume < 0.99) ? volume + 0.01 : 1.0;
