@@ -40,7 +40,6 @@
             console.log('Device ID has gone offline', device_id);
         });
 
-        // Display track name, artist name
         player.addListener('player_state_changed', state => {
             if (!state) {
                 // 何も再生していない場合

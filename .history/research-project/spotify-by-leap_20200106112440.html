@@ -14,12 +14,12 @@
     // Spotify setting
     window.onSpotifyWebPlaybackSDKReady = () => {
         // Get your access token from https://developer.spotify.com/documentation/web-playback-sdk/quick-start
-        const token = 'BQDDXslR_Y_g7pUp1csX0sP65dbcE_ilkNTCgbhSNtG3cMmpzAly_ma0P22OcvrUVMio4oB4s3mjegYdYoj986dXiRxN_PX1kU_cvVxTzHy1ra_N5SBYYa-scO0zlDwid7jqmqsEBh5-bh7Luu7Z5XZSrORspEr96ViuuCL1tLYp2zgRS4-6UG4';
+        const token = 'BQCK1W5lk3rUZy4nhCih6jFD98uUXL9pjQb0chnga-mjGro7Zy44RSzaRU5ZBAIwK1QzK0ehWqHOy9vEQE-psOwvBKHiKVTVoqMBSuQaGmcjlsG0U6vnGNNW6QbD_AT3Z1PT3h-x__ipd8tF6lDGA9VxRBUzNgca9K95IYlKP7QYPMaYR4u1g1o';
         const player = new Spotify.Player({
             name: 'Web Playback SDK Quick Start Player',
             getOAuthToken: cb => { cb(token); }
         });
-        console.log("##player##", player);
+        console.log(player);
 
         // Error handling
         player.addListener('initialization_error', ({ message }) => { console.error(message); });
@@ -40,13 +40,12 @@
             console.log('Device ID has gone offline', device_id);
         });
 
-        // Display track name, artist name
         player.addListener('player_state_changed', state => {
             if (!state) {
                 // 何も再生していない場合
-                return;
+                return ;
             }
-            const { name, artists } = state.track_window.current_track;
+            const { name, artists} = state.track_window.current_track;
             document.getElementById('trackName').textContent = name;
             document.getElementById('trackArtists').textContent = artists.map(artist => artist.name).join(', ');
         });

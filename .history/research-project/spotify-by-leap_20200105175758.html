@@ -14,12 +14,12 @@
     // Spotify setting
     window.onSpotifyWebPlaybackSDKReady = () => {
         // Get your access token from https://developer.spotify.com/documentation/web-playback-sdk/quick-start
-        const token = 'BQDDXslR_Y_g7pUp1csX0sP65dbcE_ilkNTCgbhSNtG3cMmpzAly_ma0P22OcvrUVMio4oB4s3mjegYdYoj986dXiRxN_PX1kU_cvVxTzHy1ra_N5SBYYa-scO0zlDwid7jqmqsEBh5-bh7Luu7Z5XZSrORspEr96ViuuCL1tLYp2zgRS4-6UG4';
+        const token = 'BQDXxHNgj1PCaVWOWdOWFR9KIgchkMJzlfZz7Ku810JNYYJPhDi1uf1aP9DGsFSUM6exeFlU8h5bJUNdErBC6xai9FIK4irZlxpAgXLNUCwZgfHOofL0tGvVCcsF0JyDjJaaAguBue-QDRdZ66C-rp1zzpZxQa91EtiRpAvv2lhKjCDM62FFpmc';
         const player = new Spotify.Player({
             name: 'Web Playback SDK Quick Start Player',
             getOAuthToken: cb => { cb(token); }
         });
-        console.log("##player##", player);
+        console.log(player);
 
         // Error handling
         player.addListener('initialization_error', ({ message }) => { console.error(message); });
@@ -40,15 +40,14 @@
             console.log('Device ID has gone offline', device_id);
         });
 
-        // Display track name, artist name
-        player.addListener('player_state_changed', state => {
-            if (!state) {
-                // 何も再生していない場合
-                return;
-            }
-            const { name, artists } = state.track_window.current_track;
-            document.getElementById('trackName').textContent = name;
-            document.getElementById('trackArtists').textContent = artists.map(artist => artist.name).join(', ');
+        player.addListener('player_state_changed', ({
+            position,
+            duration,
+            track_window: { current_track }
+        }) => {
+            console.log('Currently Playing', current_track);
+            console.log('Position in Song', position);
+            console.log('Duration of Song', duration);
         });
 
         // Connect to the player!
@@ -246,10 +245,6 @@
     <div>
       <h1>Spotify By Leap</h1>
       <h2>Open your console log: <code>View > Developer > JavaScript Console</code></h2>
-      <h3>trackName</h3>
-      <div id="trackName"></div>
-      <h3>trackArtists</h3>
-      <div id="trackArtists"></div>
       <button type="button" id="volume-up-button" class="btn btn-primary">Volume Up</button>
       <button type="button" id="volume-down-button" class="btn btn-primary">Volume Down</button>
       <button type="button" id="pause-button" class="btn btn-primary">Pause</button>
