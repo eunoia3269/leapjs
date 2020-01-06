@@ -49,7 +49,7 @@
             const { name, artists, album } = state.track_window.current_track;
             document.getElementById('trackName').textContent = name;
             document.getElementById('trackArtists').textContent = artists.map(artist => artist.name).join(', ');
-            document.getElementById('albumName').textContent = album.name;
+            document,getElementById('albumName').textContent = album.name;
         });
 
         // Connect to the player!
