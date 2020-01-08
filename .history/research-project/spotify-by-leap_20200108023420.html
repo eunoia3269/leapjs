@@ -22,7 +22,7 @@
     // Spotify setting
     window.onSpotifyWebPlaybackSDKReady = () => {
         // Get your access token from https://developer.spotify.com/documentation/web-playback-sdk/quick-start
-        const token = 'BQA40mK1ESshuotNqpp-9Tu4lASLO9zyCcVbT_BZVkl4Lf0sPuOL9vEJ2xF5nKCj-kKgEVctob2IPMGXzC_XEp1YQYl05bCmeXvhgHlPAS-2b_JD6nVua24LeHgWOD23A7Cn4kEmX7ZO-oGZVYq9gjxmVEGlZoLW6BSTCURztHSXiyrlCF9ayPk';
+        const token = 'BBQA40mK1ESshuotNqpp-9Tu4lASLO9zyCcVbT_BZVkl4Lf0sPuOL9vEJ2xF5nKCj-kKgEVctob2IPMGXzC_XEp1YQYl05bCmeXvhgHlPAS-2b_JD6nVua24LeHgWOD23A7Cn4kEmX7ZO-oGZVYq9gjxmVEGlZoLW6BSTCURztHSXiyrlCF9ayPk';
         const player = new Spotify.Player({
             name: 'Web Playback SDK Quick Start Player',
             getOAuthToken: cb => { cb(token); }
@@ -169,11 +169,11 @@
                             }
                             // TODO 処理がループしているため、複数回スキップしてしまう問題を対処する
                             // 一回のループでの時間などを操作する関数がないか調べてみる
-                            if (swipeDirection === "left") {
+                            if (swipeDirection === "right") {
                                 player.previousTrack().then(() => {
                                     console.log('Set to previous track!');
                                 });
-                            } else if (swipeDirection === "right") {
+                            } else if (swipeDirection === "left") {
                                 player.nextTrack().then(() => {
                                     console.log('Skipped to next track!');
                                 });

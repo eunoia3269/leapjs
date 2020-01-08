@@ -169,11 +169,11 @@
                             }
                             // TODO 処理がループしているため、複数回スキップしてしまう問題を対処する
                             // 一回のループでの時間などを操作する関数がないか調べてみる
-                            if (swipeDirection === "left") {
+                            if (swipeDirection === "right") {
                                 player.previousTrack().then(() => {
                                     console.log('Set to previous track!');
                                 });
-                            } else if (swipeDirection === "right") {
+                            } else if (swipeDirection === "left") {
                                 player.nextTrack().then(() => {
                                     console.log('Skipped to next track!');
                                 });
