@@ -58,6 +58,7 @@
             document.getElementById('trackName').textContent = name;
             document.getElementById('trackArtists').textContent = artists.map(artist => artist.name).join(', ');
             document.getElementById('albumName').textContent = album.name;
+            console.log(state);
         });
 
         // Connect to the player!
