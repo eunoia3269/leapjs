@@ -220,7 +220,6 @@
                 let volume_percentage = volume * 100;
                 console.log(`The volume of the player is ${volume_percentage}%`);
                 set_volume = (volume < 0.9) ? volume + 0.1 : 1.0;
-                document.getElementById("volumeInfo").textContent = Math.round(set_volume*100) + "%";
                 player.setVolume(set_volume).then(() => {
                     console.log('Volume Up!');
                 });
@@ -231,7 +230,6 @@
                 let volume_percentage = volume * 100;
                 console.log(`The volume of the player is ${volume_percentage}%`);
                 set_volume = (volume > 0.1) ? volume - 0.1 : 0.0;
-                document.getElementById("volumeInfo").textContent = Math.round(set_volume*100) + "%";
                 player.setVolume(set_volume).then(() => {
                     console.log('Volume Down!');
                 });

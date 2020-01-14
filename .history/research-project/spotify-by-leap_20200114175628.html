@@ -22,7 +22,7 @@
     // Spotify setting
     window.onSpotifyWebPlaybackSDKReady = () => {
         // Get your access token from https://developer.spotify.com/documentation/web-playback-sdk/quick-start
-        const token = 'BQBvjNe927lTXE02OXECQKhBQBLfllcFgqA4rKScSjG4dsmM8qrabvRDI8dYBFxa1e8nXIUs5KYIUHumzo2PBSLYE7A2mYZnVKx317gEVg8POZLTVXSB8HfTgn7_Qj36YEy7bYKpiRldombM90q6OtZL1SAvdrjAsgxSjJH-pRX0tZ2OFQlKWC4';
+        const token = 'BQDRz2MSaiu1TnROS-oTZL1ExQk4qa97D6z1lxN1ABlUjkj2hUvJ2JBUqLJuKV4WfFHHq44tFwpMUiN26D19gt-XPo3hwP5WeVWLLSO1ikJHml4X9Xv2frfSv_lqR3uzXjaVlAExDTmV4X3fQj716XJa8_IH_5oN0iI7XEOHjNwg0b83C9s_pJk';
         const player = new Spotify.Player({
             name: 'Web Playback SDK Quick Start Player',
             getOAuthToken: cb => { cb(token); }
@@ -139,7 +139,7 @@
                                     set_volume = (volume > 0.01) ? volume - 0.01 : 0.0;
                                     console.log('Volume Down');
                                 }
-                                document.getElementById("volumeInfo").textContent = Math.round(set_volume*100) + "%";
+                                document.getElementById("volumeInfo").textContent = math.round(set_volume);
                                 player.setVolume(set_volume).then(() => {
                                     // console.log('Volume Change!');
                                 });
@@ -220,7 +220,6 @@
                 let volume_percentage = volume * 100;
                 console.log(`The volume of the player is ${volume_percentage}%`);
                 set_volume = (volume < 0.9) ? volume + 0.1 : 1.0;
-                document.getElementById("volumeInfo").textContent = Math.round(set_volume*100) + "%";
                 player.setVolume(set_volume).then(() => {
                     console.log('Volume Up!');
                 });
@@ -231,7 +230,6 @@
                 let volume_percentage = volume * 100;
                 console.log(`The volume of the player is ${volume_percentage}%`);
                 set_volume = (volume > 0.1) ? volume - 0.1 : 0.0;
-                document.getElementById("volumeInfo").textContent = Math.round(set_volume*100) + "%";
                 player.setVolume(set_volume).then(() => {
                     console.log('Volume Down!');
                 });
@@ -299,9 +297,9 @@
             <button type="button" id="resume-button" class="col-1 btn btn-link btn-lg fas fa-play"></button>
             <button type="button" id="pause-button" class="col-1 btn btn-link btn-lg fas fa-pause"></button>
             <button type="button" id="next-track-button" class="col-1 ml-2 btn btn-secondary btn-lg fas fa-step-forward"></button>
-            <button type="button" id="volume-up-button" class="col-1 ml-5 btn btn-light btn-lg fas fa-volume-up"></button>
-            <button type="button" id="volume-down-button" class="col-1 btn btn-light btn-lg fas fa-volume-down"></button>
-            <span id="volumeInfo" class="col-1 h5"> 100%</span>
+            <button type="button" id="volume-up-button" class="ml-5 btn btn-light btn-lg fas fa-volume-up"></button>
+            <button type="button" id="volume-down-button" class="btn btn-light btn-lg fas fa-volume-down"></button>
+            <div id="volumeInfo" class="h5">ボリューム</div>
         </div>
       </div>
     </div>
