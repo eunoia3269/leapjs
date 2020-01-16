@@ -117,14 +117,10 @@
                     switch (gesture.type) {
                         case "circle":
                             // check clockwise or counterclockwise
-                            try {  // deal with unknown error(0が表示されるerror)
-                                var clockwise = false;
-                                var pointableID = gesture.pointableIds[0];
-                                var direction = frame.pointable(pointableID).direction;
-                                var dotProduct = Leap.vec3.dot(direction, gesture.normal);
-                            } catch(error) {
-                                console.log(error);
-                            }
+                            var clockwise = false;
+                            var pointableID = gesture.pointableIds[0];
+                            var direction = frame.pointable(pointableID).direction;
+                            var dotProduct = Leap.vec3.dot(direction, gesture.normal);
                             if (dotProduct  >  0) {
                                 clockwise = true;
                                 // console.log("clockwise");

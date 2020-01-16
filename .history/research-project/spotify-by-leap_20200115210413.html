@@ -22,7 +22,7 @@
     // Spotify setting
     window.onSpotifyWebPlaybackSDKReady = () => {
         // Get your access token from https://developer.spotify.com/documentation/web-playback-sdk/quick-start
-        const token = 'BQAgW3aMqjCVd6X60mFUldnvbEbTAo8oQLpec0NWxuDWPPU0bx80LRVm_2LWcozXBMeZRmGDVsiyVz3lnNOWteQibymAOY-IEtRd2BGQ34MJ0cETy8W94fLl2XS95wf_JMDNg9bCmkN5N2ybARWe2-hA0VkyX1MDcCZGBuKApX9ylRPnk3IsN_0';
+        const token = 'BQAFHoQ2-8ZDwPk8oGvCBcP5Hv3UmnWgAJbUeNKj9-vlK9V_wbLDyQYUVJUlBsi2CkF-6w1PKoerA_I3SnhMpbmrEbmgjSLw_XGkL3PfreF3mFv459zNV2aZCUqz_q8csR9ntNxVSQjJTwKVr1DPAD1LMHUt4-F-NTVXcEKc9KlgI_3pW5nD7D8';
         const player = new Spotify.Player({
             name: 'Spotify By Leap',
             getOAuthToken: cb => { cb(token); }
@@ -117,14 +117,10 @@
                     switch (gesture.type) {
                         case "circle":
                             // check clockwise or counterclockwise
-                            try {  // deal with unknown error(0が表示されるerror)
-                                var clockwise = false;
-                                var pointableID = gesture.pointableIds[0];
-                                var direction = frame.pointable(pointableID).direction;
-                                var dotProduct = Leap.vec3.dot(direction, gesture.normal);
-                            } catch(error) {
-                                console.log(error);
-                            }
+                            var clockwise = false;
+                            var pointableID = gesture.pointableIds[0];
+                            var direction = frame.pointable(pointableID).direction;
+                            var dotProduct = Leap.vec3.dot(direction, gesture.normal);
                             if (dotProduct  >  0) {
                                 clockwise = true;
                                 // console.log("clockwise");

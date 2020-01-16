@@ -117,7 +117,7 @@
                     switch (gesture.type) {
                         case "circle":
                             // check clockwise or counterclockwise
-                            try {  // deal with unknown error(0が表示されるerror)
+                            try{
                                 var clockwise = false;
                                 var pointableID = gesture.pointableIds[0];
                                 var direction = frame.pointable(pointableID).direction;
