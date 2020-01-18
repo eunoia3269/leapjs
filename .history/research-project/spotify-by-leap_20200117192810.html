@@ -22,7 +22,7 @@
     // Spotify setting
     window.onSpotifyWebPlaybackSDKReady = () => {
         // Get your access token from https://developer.spotify.com/documentation/web-playback-sdk/quick-start
-        const token = 'BQDdcSeLIvaHWTGIMXwMKhWejHJTqhs4GQ3tFZR3KGZp0RpMSwUDTKEl39S3f4jobOhur7kIiXizH7yTf_Izfx9mFCAursK0Bij5oW3hB8EaOUh32UPmmwE6ORaUwETqnrYyC6F-M7yONXX6ujsAj4iTEpkPMGTi19YT3vxcQ3AAQ1wyrDLB3eg';
+        const token = 'BQB1uTpPdpHNZ7o9gUocKZaaMq5v_mgczCf53F80Q74LCyNa9sEjJh0n1u_5CtFuIeR3dUbE3HcXoz9uP3sm2WbxqwPvkacaVtDSu8cHMxhAdUqKJ7C81bh2fDWzm1Exl1smDq2RRH2MR1QvtQTfNyC9pc1PfcVhwzs85Yc5-T9OrbZ3_-RHAUc';
         const player = new Spotify.Player({
             name: 'Spotify By Leap',
             getOAuthToken: cb => { cb(token); }
