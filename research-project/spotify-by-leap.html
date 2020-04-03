@@ -81,7 +81,7 @@
         let position;
         // 毎フレーム
         window.requestAnimationFrame(updatePosition);
-        function updatePosition() {
+        const updatePosition = () => {
             window.requestAnimationFrame(updatePosition);
             if (!lastState) {
             // 何も再生していない場合
@@ -219,7 +219,7 @@
         // ----------------------------------------------------
         // ボタンによる操作
         // ----------------------------------------------------
-        document.getElementById("volume-up-button").onclick = function() {
+        document.getElementById("volume-up-button").onclick = () => {
             player.getVolume().then(volume => {
                 let volume_percentage = volume * 100;
                 console.log(`The volume of the player is ${volume_percentage}%`);
@@ -230,7 +230,7 @@
                 });
             });
         };
-        document.getElementById("volume-down-button").onclick = function() {
+        document.getElementById("volume-down-button").onclick = () => {
             player.getVolume().then(volume => {
                 let volume_percentage = volume * 100;
                 console.log(`The volume of the player is ${volume_percentage}%`);
@@ -241,36 +241,36 @@
                 });
             });
         };
-        document.getElementById("pause-button").onclick = function() {
+        document.getElementById("pause-button").onclick = () => {
             player.pause().then(() => {
                 console.log('Paused!');
             });
         };
-        document.getElementById("resume-button").onclick = function() {
+        document.getElementById("resume-button").onclick = () => {
             player.resume().then(() => {
                console.log('Resumed!');
             });
         };
         // 使用しないため、コメントアウト
-        // document.getElementById("seek-button").onclick = function() {
+        // document.getElementById("seek-button").onclick = () => {
         //     // Seek to a minute into the track
         //     player.seek(60 * 1000).then(() => {
         //         console.log('Changed position!');
         //     });
         // };
-        document.getElementById("previous-track-button").onclick = function() {
+        document.getElementById("previous-track-button").onclick = () => {
             player.previousTrack().then(() => {
                 console.log('Set to previous track!');
             });
         };
-        document.getElementById("next-track-button").onclick = function() {
+        document.getElementById("next-track-button").onclick = () => {
             player.nextTrack().then(() => {
                 console.log('Skipped to next track!');
             });
         };
     }
 
-    function vectorToString(vector, digits) {
+    const vectorToString = (vector, digits) => {
         try{
             if (typeof digits === "undefined") {
                 digits = 1;
@@ -283,7 +283,7 @@
         }
     }
 
-    function checkLibrary() {
+    const checkLibrary = () => {
         console.log("Hello Spotify By Leap!");
     }
 
