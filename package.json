@@ -17,7 +17,7 @@
   "dependencies": {
     "bootstrap": "^4.4.1",
     "gl-matrix": "2.2.1",
-    "underscore": "^1.4.4",
+    "underscore": "^1.10.2",
     "ws": "3.3.1"
   },
   "devDependencies": {
@@ -31,7 +31,7 @@
     "grunt-contrib-watch": "~0.6.1",
     "grunt-exec": "~0.4.5",
     "grunt-string-replace": "~0.2.7",
-    "http-server": "*",
+    "http-server": "^0.12.1",
     "jsdoc": "3.2.0-dev",
     "load-grunt-tasks": "~0.3.0",
     "mocha": "1.7.4",
