@@ -34,7 +34,7 @@
     "http-server": "*",
     "jsdoc": "^3.6.3",
     "load-grunt-tasks": "^5.1.0",
-    "mocha": "^6.2.2",
+    "mocha": "^10.2.0",
     "mocha-chrome": "^2.2.0",
     "nodemon": "^2.0.1",
     "uglify-js": "^3.7.2"
